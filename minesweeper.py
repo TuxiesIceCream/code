@@ -1,4 +1,20 @@
-import array
+class Grid:
+    #grid = {}
+    def __init__(self,map):
+        self.grid = {}
+        self.rows = map.splitlines()
+        self.row = len(self.rows)
+        for r in range(self.row):
+            self.rows[r] = self.rows[r].replace(' ','')
+            #print()
+        self.col = len(self.rows[0])
+        for r in range(self.row):
+            for c in range(self.col):
+                self.grid[(r,c)] = self.rows[r][c]
+
+
+                
+        
 map = """
 ? ? ? ? 0 0 0
 ? ? ? ? 0 ? ?
@@ -10,24 +26,10 @@ map = """
 0 0 0 0 0 ? ?
 0 0 0 0 0 ? ?
 """.strip()
-##print(map)
-rows = map.splitlines()
-#r = len(rows)
-#c = len(rows[0]) // 2
-#d = '* ' * c
-##print(d)
-#print("****************************")
-for r in rows:
-    r = r.replace(' ','')
-    ##print(r)
-##print(map)
-##print("****************************")
-##print(rows[0])
-##print(len(rows[0]))
-cols = (len(rows[0])+1)//2
-##print(c)
-##print(c*'* ')
-##print(map)
-for c in range(cols):
-    print(rows[c])
-##print(map)
+g = Grid(map)
+s=''
+for r in range(9):
+    for c in range(7):
+        s += g.grid[(r,c)]
+    print(s)
+    s=''
